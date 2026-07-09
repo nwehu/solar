@@ -1,15 +1,17 @@
-import TopHeader from "./components/TopHeader/TopHeader";
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
+import ManageServices from "./pages/ManageServices";
+
 function App() {
   return (
-    <>
-      <TopHeader />
-      <Navbar/>
-      <Hero/>
-      
-
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/manage-services" element={<ManageServices />} />
+    </Routes>
   );
 }
 

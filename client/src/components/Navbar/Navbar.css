@@ -29,6 +29,12 @@ border-bottom:1px solid #eee;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
 
 }
+.logo h2{
+    color: #7cb342;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+}
 
 .nav-links{
 
@@ -105,5 +111,56 @@ transition:.3s;
 .nav-right button:hover{
 
 background:#5d982f;
+
+}
+.nav-links li a {
+    text-decoration: none;
+    color: inherit;
+
+}
+.nav-links li a:hover{
+    color: #2e8b57;
+}
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width:768px){
+
+.navbar{
+    padding:0 20px;
+    height:70px;
+    position:relative;
+}
+
+.menu-icon{
+    display:block;
+    font-size:34px;
+    cursor:pointer;
+    margin-left:auto;
+}
+
+.nav-links{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+    gap:20px;
+}
+
+.nav-links.active{
+    display:flex;
+}
+
+.nav-right{
+    display:none;
+}
 
 }

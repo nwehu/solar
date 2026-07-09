@@ -1,10 +1,12 @@
 import "./Navbar.css";
 import { useEffect, useState } from "react";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function Navbar() {
 
   const [sticky, setSticky] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
 
@@ -15,9 +17,8 @@ function Navbar() {
       } else {
         setSticky(false);
       }
-
     };
-
+    
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,19 +28,27 @@ function Navbar() {
   return (
 
     <nav className={sticky ? "navbar sticky" : "navbar"}>
+      <div
+  className="menu-icon"
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  {menuOpen ? <FiX /> : <FiMenu />}
+</div>
 
-      <ul className="nav-links">
+      <ul className={menuOpen ? "nav-links active" : "nav-links"}>
 
         <li>Home</li>
         <li>Pages</li>
         <li>Services</li>
         <li>Portfolio</li>
         <li>News</li>
-        <li>Contact</li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
 
       </ul>
 
-      <div className="nav-right">
+      <div className={menuOpen ? "nav-right active" : "nav-right"}>
 
         <span className="login">Login / Register</span>
 

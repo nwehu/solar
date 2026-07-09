@@ -1,23 +1,29 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import contactRoutes from "./routes/contactRoutes.js"
+import serviceRoutes from "./routes/serviceRoutes.js";
+
+dotenv.config();
+
+console.log(process.env.MONGO_URI);
+
+connectDB();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api",contactRoutes);
+app.use("/api", serviceRoutes);
 
-// Home route
 app.get("/", (req, res) => {
-  res.send("Backend is running!");
+  res.send("Backend Running Successfully 🚀");
 });
 
-// API route
-app.get("/api/message", (req, res) => {
-  res.json({ message: "Hello from Backend!" });
-});
-
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

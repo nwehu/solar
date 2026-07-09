@@ -1,0 +1,188 @@
+.testimonials{
+    padding:120px 0;
+    background:#f7f7f7;
+}
+
+.testimonial-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.testimonial-tag{
+    color:#9ac43c;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.testimonial-header h2{
+    font-size:52px;
+    color:#222;
+    margin-top:18px;
+}
+
+.testimonial-grid{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+.testimonial-card{
+    background:#fff;
+    padding:45px;
+    border-radius:12px;
+    position:relative;
+    transition:.35s;
+    box-shadow:0 15px 35px rgba(0,0,0,.06);
+}
+
+.testimonial-card:hover{
+    transform:translateY(-10px);
+}
+
+.quote-icon{
+    position:absolute;
+    top:35px;
+    right:35px;
+    font-size:42px;
+    color:#9ac43c;
+}
+
+.review{
+    color:#666;
+    font-size:17px;
+    line-height:1.9;
+    margin-bottom:30px;
+    padding-right:60px;
+}
+
+.stars{
+    color:#ffb400;
+    margin-bottom:30px;
+    display:flex;
+    gap:5px;
+    font-size:18px;
+}
+
+.client{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.client img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.client h3{
+    font-size:22px;
+    color:#222;
+    margin-bottom:5px;
+}
+
+.client span{
+    color:#777;
+    font-size:15px;
+}
+
+/* Laptop */
+@media (max-width:1200px){
+
+.testimonials{
+    padding:100px 30px;
+}
+
+.testimonial-header h2{
+    font-size:42px;
+}
+
+.testimonial-grid{
+    gap:25px;
+}
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+.testimonials{
+    padding:80px 30px;
+}
+
+.testimonial-header h2{
+    font-size:38px;
+}
+
+.testimonial-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+}
+
+.testimonial-card{
+    padding:35px;
+}
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+.testimonials{
+    padding:60px 20px;
+}
+
+.testimonial-header{
+    margin-bottom:40px;
+}
+
+.testimonial-header h2{
+    font-size:30px;
+}
+
+.testimonial-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.testimonial-card{
+    padding:25px;
+}
+
+.quote-icon{
+    font-size:30px;
+    top:20px;
+    right:20px;
+}
+
+.review{
+    font-size:15px;
+    line-height:1.7;
+    padding-right:20px;
+}
+
+.client{
+    gap:12px;
+}
+
+.client img{
+    width:60px;
+    height:60px;
+}
+
+.client h3{
+    font-size:18px;
+}
+
+.client span{
+    font-size:14px;
+}
+
+}

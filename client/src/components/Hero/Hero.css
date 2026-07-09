@@ -1,12 +1,13 @@
 .hero{
     width:100%;
-    height:100vh;
+    height:90vh;
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
     position:relative;
     display:flex;
     align-items:center;
+    transition:background-image 1s ease-in-out;
 }
 
 .overlay{
@@ -19,8 +20,8 @@
     position:relative;
     z-index:2;
     color:#fff;
-    max-width:700px;
-    margin-left:90px;
+    max-width:650px;
+    margin-left:80px;
 }
 
 .hero-tag{
@@ -33,49 +34,84 @@
 }
 
 .hero-content h1{
-    font-size:52px;
+    font-size: 64px;
     line-height:1.1;
     margin-bottom:25px;
+    font-weight: 700;
     
 }
 
 .hero-content p{
-    font-size:20px;
+    font-size:18px;
     line-height:1.8;
     margin-bottom:35px;
     color:#98e3b6;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:20px;
 }
 
 .primary-btn{
     background:#7CB342;
     color:#fff;
     border:none;
-    padding:16px 34px;
-    font-size:16px;
+    padding:16px 39px;
+    font-size:20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius:6px;
     cursor:pointer;
 }
 
-.secondary-btn{
-    background:transparent;
-    color:#fff;
-    border:2px solid #fff;
-    padding:16px 34px;
-    font-size:16px;
-    border-radius:6px;
-    cursor:pointer;
-}
 
 .primary-btn:hover{
     background:#5f9932;
 }
+/* Tablet */
+@media (max-width:992px){
 
-.secondary-btn:hover{
-    background:#fff;
-    color:#222;
+.hero{
+    height:80vh;
+}
+
+.hero-content{
+    margin-left:50px;
+    max-width:600px;
+}
+
+.hero-content h1{
+    font-size:48px;
+}
+
+.hero-content p{
+    font-size:17px;
+}
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+.hero{
+    height:70vh;
+    padding:0 20px;
+}
+
+.hero-content{
+    margin:0;
+    max-width:100%;
+}
+
+.hero-content h1{
+    font-size:34px;
+    line-height:1.2;
+}
+
+.hero-content p{
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.primary-btn{
+    padding:12px 24px;
+    font-size:16px;
+}
+
 }
