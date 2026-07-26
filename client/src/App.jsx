@@ -8,6 +8,7 @@ import AdminContacts from "./pages/AdminContacts";
 import ServicesPage from "./pages/ServicesPage";
 import Portfolio from "./pages/Portfolio";
 import News from "./pages/News";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/portfolio" element={<Portfolio />} />
       <Route path="/news" element={<News />} />
+      <Route path="/about" element={<About />} />
       
 <Route path="/admin/dashboard" element={<Dashboard />} />
 
