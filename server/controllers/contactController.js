@@ -1,6 +1,6 @@
 import Contact from "../models/Contact.js";
 
-// Save Contact Form
+// Create Contact
 export const createContact = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
@@ -26,6 +26,8 @@ export const createContact = async (req, res) => {
     });
   }
 };
+
+// Get All Contacts
 export const getContacts = async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
@@ -41,9 +43,18 @@ export const getContacts = async (req, res) => {
     });
   }
 };
+
+// Delete Contact
 export const deleteContact = async (req, res) => {
   try {
-    await Contact.findByIdAndDelete(req.params.id);
+    const deletedContact = await Contact.findByIdAndDelete(req.params.id);
+
+    if (!deletedContact) {
+      return res.status(404).json({
+        success: false,
+        message: "Contact not found",
+      });
+    }
 
     res.status(200).json({
       success: true,

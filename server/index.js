@@ -3,8 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import contactRoutes from "./routes/contactRoutes.js"
+import adminRoutes from "./routes/adminRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
-
 dotenv.config();
 
 console.log(process.env.MONGO_URI);
@@ -16,8 +16,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api",contactRoutes);
-app.use("/api", serviceRoutes);
-
+app.use("/api", adminRoutes);
+app.use("/api/services", serviceRoutes);
 app.get("/", (req, res) => {
   res.send("Backend Running Successfully 🚀");
 });

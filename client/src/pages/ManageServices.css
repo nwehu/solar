@@ -1,0 +1,179 @@
+.manage-services-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 30px;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+/* ================= FORM ================= */
+
+.service-form-card {
+  background: #fff;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 50px;
+}
+
+.service-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.service-form input,
+.service-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  transition: .3s;
+  box-sizing: border-box;
+}
+
+.service-form textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.service-form input:focus,
+.service-form textarea:focus {
+  border-color: #84c341;
+  box-shadow: 0 0 8px rgba(132,195,65,.25);
+}
+
+.service-form textarea {
+  grid-column: span 2;
+}
+
+.submit-btn {
+  grid-column: span 2;
+  background: #84c341;
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.submit-btn:hover {
+  background: #6da82f;
+}
+
+/* ================= SERVICES ================= */
+
+.services-heading {
+  margin-bottom: 25px;
+  color: #1f2937;
+  font-size: 32px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 25px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transition: .3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-number {
+  color: #84c341;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.service-card h3 {
+  margin: 15px 0;
+  font-size: 28px;
+  color: #222;
+}
+
+.service-card p {
+  color: #555;
+  line-height: 1.7;
+}
+
+.image-name {
+  margin-top: 20px;
+  color: #333;
+  font-size: 16px;
+}
+
+/* ================= BUTTONS ================= */
+
+.service-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: .3s;
+}
+
+.edit-btn {
+  background: #0d6efd;
+}
+
+.edit-btn:hover {
+  background: #0b5ed7;
+}
+
+.delete-btn {
+  background: #dc3545;
+}
+
+.delete-btn:hover {
+  background: #bb2d3b;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px) {
+
+  .service-form {
+    grid-template-columns: 1fr;
+  }
+
+  .service-form textarea,
+  .submit-btn {
+    grid-column: span 1;
+  }
+
+  .page-title {
+    font-size: 30px;
+  }
+
+  .services-heading {
+    font-size: 28px;
+  }
+}

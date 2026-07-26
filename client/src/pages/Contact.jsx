@@ -27,21 +27,21 @@ function Contact() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const response = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-      const data = await response.json();
-      setSuccess(data.message);
+    const data = await response.json();
 
+    if (response.ok) {
       setSuccess("✅ Thank you! Your message has been sent successfully.");
 
       setFormData({
@@ -50,11 +50,14 @@ function Contact() {
         subject: "",
         message: "",
       });
-    } catch (error) {
-      console.log(error);
-      alert("Something went wrong!");
+    } else {
+      setSuccess("❌ " + data.message);
     }
-  };
+  } catch (error) {
+    console.log(error);
+    setSuccess("❌ Something went wrong!");
+  }
+};
 
   return (
     <>

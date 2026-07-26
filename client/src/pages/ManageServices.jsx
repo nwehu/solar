@@ -1,30 +1,34 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import "./ManageServices.css";
 
 function ManageServices() {
   const [services, setServices] = useState([]);
+
   const [formData, setFormData] = useState({
+    number: "",
     title: "",
     description: "",
-    icon: "",
+    image: "",
   });
+
+  const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
     fetchServices();
   }, []);
 
-  // Fetch all services
+  // Fetch Services
   const fetchServices = async () => {
     try {
       const res = await api.get("/services");
       setServices(res.data.services);
     } catch (error) {
       console.log(error);
-      alert("Failed to fetch services");
     }
   };
 
-  // Handle input changes
+  // Handle Inputs
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -32,95 +36,172 @@ function ManageServices() {
     });
   };
 
-  // Add a new service
+  // Add / Update
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await api.post("/service", formData);
-
-      alert("Service added successfully!");
+      if (editingId) {
+        await api.put(`/services/${editingId}`, formData);
+        alert("Service Updated Successfully");
+      } else {
+        await api.post("/services", formData);
+        alert("Service Added Successfully");
+      }
 
       setFormData({
+        number: "",
         title: "",
         description: "",
-        icon: "",
+        image: "",
       });
+
+      setEditingId(null);
 
       fetchServices();
     } catch (error) {
       console.log(error);
-      alert("Failed to add service");
+      alert("Something went wrong");
+    }
+  };
+
+  // Edit
+  const handleEdit = (service) => {
+    setEditingId(service._id);
+
+    setFormData({
+      number: service.number,
+      title: service.title,
+      description: service.description,
+      image: service.image,
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // Delete
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this service?")) return;
+
+    try {
+      await api.delete(`/services/${id}`);
+
+      alert("Service Deleted Successfully");
+
+      fetchServices();
+    } catch (error) {
+      console.log(error);
+      alert("Delete Failed");
     }
   };
 
   return (
-    <div style={{ padding: "30px" }}>
-      <h1>Manage Services</h1>
+    <div className="manage-services-container">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Service Title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
+      {/* Header */}
+      <h1 className="page-title">
+        Manage Services
+      </h1>
 
-        <br />
-        <br />
+      {/* Form */}
+      <div className="service-form-card">
+        <form className="service-form" onSubmit={handleSubmit}>
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="text"
+            name="number"
+            placeholder="01 SERVICE"
+            value={formData.number}
+            onChange={handleChange}
+            required
+          />
 
-        <br />
-        <br />
+          <input
+            type="text"
+            name="title"
+            placeholder="Service Title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="text"
-          name="icon"
-          placeholder="Icon (Example: FaSolarPanel)"
-          value={formData.icon}
-          onChange={handleChange}
-          required
-        />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+          />
 
-        <br />
-        <br />
+          <input
+            type="text"
+            name="image"
+            placeholder="hero6.jpg"
+            value={formData.image}
+            onChange={handleChange}
+            required
+          />
 
-        <button type="submit">Add Service</button>
-      </form>
+          <button className="submit-btn" type="submit">
+            {editingId ? "Update Service" : "Add Service"}
+          </button>
 
-      <hr />
+        </form>
+      </div>
 
-      <h2>All Services</h2>
+      {/* Heading */}
+      <h2 className="services-heading">
+        All Services
+      </h2>
 
-      {services.length === 0 ? (
-        <p>No services found.</p>
-      ) : (
-        services.map((service) => (
-          <div
-            key={service._id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "15px",
-              marginBottom: "15px",
-            }}
-          >
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <p>
-              <strong>Icon:</strong> {service.icon}
-            </p>
-          </div>
-        ))
-      )}
+      {/* Cards */}
+      <div className="services-grid">
+
+        {services.length === 0 ? (
+          <p>No Services Found</p>
+        ) : (
+          services.map((service) => (
+            <div className="service-card" key={service._id}>
+
+              <span className="service-number">
+                {service.number}
+              </span>
+
+              <h3>{service.title}</h3>
+
+              <p>{service.description}</p>
+
+              <div className="image-name">
+                <strong>Image:</strong> {service.image}
+              </div>
+
+              <div className="service-buttons">
+
+                <button
+                  className="edit-btn"
+                  onClick={() => handleEdit(service)}
+                >
+                  Edit
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(service._id)}
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </div>
+          ))
+        )}
+
+      </div>
+
     </div>
   );
 }

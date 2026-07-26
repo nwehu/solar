@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const serviceSchema = new mongoose.Schema(
   {
+    number: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -10,7 +14,7 @@ const serviceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    icon: {
+    image: {
       type: String,
       required: true,
     },
@@ -20,6 +24,4 @@ const serviceSchema = new mongoose.Schema(
   }
 );
 
-const Service = mongoose.model("Service", serviceSchema);
-
-export default Service;
+export default mongoose.model("Service", serviceSchema);
