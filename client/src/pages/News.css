@@ -1,0 +1,276 @@
+/* ==============================
+   NEWS HERO
+================================ */
+
+.news-hero {
+  height: 420px;
+  background-image: url("../assets/images/hero2.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.news-hero-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.news-hero-overlay span {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.news-hero-overlay h1 {
+  font-size: 52px;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.news-hero-overlay p {
+  font-size: 15px;
+  margin: 0;
+}
+
+
+/* ==============================
+   NEWS SECTION
+================================ */
+
+.news-section {
+  padding: 100px 7%;
+  background: #ffffff;
+}
+
+.news-header {
+  max-width: 700px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.news-tag {
+  color: #6baa35;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.news-header h2 {
+  font-size: 42px;
+  margin: 15px 0;
+  color: #1c1c1c;
+}
+
+.news-header p {
+  color: #777;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+
+/* ==============================
+   NEWS GRID
+================================ */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+
+/* ==============================
+   NEWS CARD
+================================ */
+
+.news-card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==============================
+   NEWS IMAGE
+================================ */
+
+.news-image {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-image img {
+  transform: scale(1.06);
+}
+
+.news-category {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+
+  background: #8bc34a;
+  color: white;
+
+  padding: 8px 13px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+
+/* ==============================
+   NEWS CONTENT
+================================ */
+
+.news-content {
+  padding: 28px;
+}
+
+.news-date {
+  color: #8bc34a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.news-content h3 {
+  color: #1c1c1c;
+  font-size: 24px;
+  line-height: 1.3;
+  margin: 12px 0;
+}
+
+.news-content p {
+  color: #777;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+
+/* ==============================
+   READ MORE BUTTON
+================================ */
+
+.news-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+.news-read-more svg {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.news-read-more:hover svg {
+  transform: translate(4px, -4px);
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-hero-overlay h1 {
+    font-size: 42px;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .news-hero {
+    height: 350px;
+  }
+
+  .news-hero-overlay h1 {
+    font-size: 34px;
+  }
+
+  .news-section {
+    padding: 70px 5%;
+  }
+
+  .news-header h2 {
+    font-size: 34px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-image {
+    height: 230px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .news-hero {
+    height: 300px;
+  }
+
+  .news-hero-overlay h1 {
+    font-size: 30px;
+  }
+
+  .news-section {
+    padding: 55px 20px;
+  }
+
+  .news-header h2 {
+    font-size: 29px;
+  }
+
+}
