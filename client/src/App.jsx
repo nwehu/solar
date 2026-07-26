@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-
 import ManageServices from "./pages/ManageServices";
 import AdminLogin from "./pages/AdminLogin";
 import Dashboard from "./pages/Dashboard";
 import AdminContacts from "./pages/AdminContacts";
 import ServicesPage from "./pages/ServicesPage";
+import Portfolio from "./pages/Portfolio";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
       <Route path="/manage-services" element={<ManageServices />} />
       <Route path="/admin" element={<AdminLogin />} />
       <Route path="/services" element={<ServicesPage />} />
+      <Route path="/portfolio" element={<Portfolio />} />
       
 <Route path="/admin/dashboard" element={<Dashboard />} />
 
